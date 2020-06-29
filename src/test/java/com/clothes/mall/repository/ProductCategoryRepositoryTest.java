@@ -2,7 +2,7 @@ package com.clothes.mall.repository;
 
 import com.clothes.mall.domain.admin.Admin;
 import com.clothes.mall.domain.admin.AdminStatus;
-import com.clothes.mall.repository.AdminRepository;
+import com.clothes.mall.domain.category.ProductCategory;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,44 +16,38 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AdminRepositoryTest {
+public class ProductCategoryRepositoryTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-
     @Autowired
     private AdminRepository adminRepository;
+    @Autowired
+    private ProductCategoryRepository productCategoryRepository;
 
     @After
     public void tearDown() throws Exception {
-        adminRepository.deleteAll();
+        //productCategoryRepository.deleteAll();
     }
 
 
     @Test
-    public void save_post_test(){
+    public void save_product_category(){
         // given
-        String aid = "aid";
-        String password = "password";
-        String name = "관리자";
-        String email = "aaa@aaa.com";
-        String phoneNumber = "010-1234-5678";
+        String name = "상의";
+        int priority = 0;
 
-        Admin admin = Admin.builder()
-                .aid(aid)
-                .password(password)
+        ProductCategory productCategory = ProductCategory.builder()
                 .name(name)
-                .email(email)
-                .phoneNumber(phoneNumber)
-                .status(AdminStatus.active)
+                .priority(priority)
                 .build();
 
         // when
-        Admin saveAdmin = adminRepository.save(admin);
+        ProductCategory saveProductCategory = productCategoryRepository.save(productCategory);
+
 
         // then
-        assertThat(saveAdmin.getAid(), is(aid));
-        assertThat(saveAdmin.getName(), is(name));
+        assertThat(saveProductCategory.getName(), is(name));
 
     }
 

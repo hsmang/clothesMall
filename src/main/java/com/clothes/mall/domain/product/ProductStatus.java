@@ -1,4 +1,4 @@
-package com.clothes.mall.domain;
+package com.clothes.mall.domain.product;
 
 public enum ProductStatus {
     active("활동중"),

@@ -2,8 +2,7 @@ package com.clothes.mall.domain.product;
 
 import com.clothes.mall.domain.admin.Admin;
 import com.clothes.mall.domain.BaseTimeEntity;
-import com.clothes.mall.domain.ProductCategoryDetail;
-import com.clothes.mall.domain.ProductStatus;
+import com.clothes.mall.domain.category.ProductCategoryDetail;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

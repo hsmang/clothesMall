@@ -2,7 +2,6 @@ package com.clothes.mall.repository;
 
 import com.clothes.mall.domain.admin.Admin;
 import com.clothes.mall.domain.admin.AdminStatus;
-import com.clothes.mall.repository.AdminRepository;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -16,17 +15,18 @@ import static org.junit.Assert.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class AdminRepositoryTest {
+public class ProductRepositoryTest {
 
     @Autowired
     private TestRestTemplate restTemplate;
-
     @Autowired
     private AdminRepository adminRepository;
+    @Autowired
+    private ProductRepository productRepository;
 
     @After
     public void tearDown() throws Exception {
-        adminRepository.deleteAll();
+        productRepository.deleteAll();
     }
 
 
@@ -51,9 +51,12 @@ public class AdminRepositoryTest {
         // when
         Admin saveAdmin = adminRepository.save(admin);
 
+
+
+        //productRepository.save();
+
         // then
         assertThat(saveAdmin.getAid(), is(aid));
-        assertThat(saveAdmin.getName(), is(name));
 
     }
 

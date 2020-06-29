@@ -1,15 +1,18 @@
-package com.clothes.mall.domain;
+package com.clothes.mall.domain.category;
 
+import com.clothes.mall.domain.BaseTimeEntity;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 import javax.persistence.*;
 
+@ToString
 @Getter
 @NoArgsConstructor
 @Entity
-public class ProductCategory extends BaseTimeEntity{
+public class ProductCategory extends BaseTimeEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -30,4 +33,7 @@ public class ProductCategory extends BaseTimeEntity{
         this.priority = priority;
     }
 
+    public void changeName(String name) {
+        this.name = name;
+    }
 }

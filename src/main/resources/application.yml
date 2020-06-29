@@ -20,10 +20,13 @@ spring:
     password: root
     driverClassName: org.mariadb.jdbc.Driver
     #url: jdbc:h2:~/data/data
+  output:
+    ansi:
+      enabled: always
 logging:
   level:
     org:
       hibernate:
         type:
           descriptor:
-            sql: debug
+            sql: trace
