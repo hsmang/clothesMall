@@ -1,8 +1,11 @@
 package com.clothes.mall.repository;
 
 import com.clothes.mall.domain.admin.Admin;
+import com.clothes.mall.domain.admin.AdminResponseListDto;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface AdminRepository extends JpaRepository<Admin, Long> {
+import java.util.List;
 
+public interface AdminRepository extends JpaRepository<Admin, Long> {
 }

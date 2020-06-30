@@ -55,5 +55,25 @@ public class Admin extends BaseTimeEntity {
         this.status = status;
     }
 
+    /**
+     * Admin 수정, AdminUpdateDto로 필요값을 받은 후 처리
+     * @param adminUpdateDto
+     */
+    public void update(AdminUpdateDto adminUpdateDto) {
+        this.aid = adminUpdateDto.getAid();
+        this.email = adminUpdateDto.getEmail();
+        this.name = adminUpdateDto.getName();
+        this.password = adminUpdateDto.getPassword();
+        this.phoneNumber = adminUpdateDto.getPhoneNumber();
+    }
 
+    /**
+     * Admin 삭제, isDeleted = 10
+     * @param b
+     */
+    public void delete(boolean b) {
+        if(b){
+            this.isDeleted = 10;
+        }
+    }
 }
