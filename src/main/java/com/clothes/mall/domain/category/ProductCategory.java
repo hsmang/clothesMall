@@ -33,7 +33,14 @@ public class ProductCategory extends BaseTimeEntity {
         this.priority = priority;
     }
 
-    public void changeName(String name) {
-        this.name = name;
+    public void update(ProductCategoryUpdateDto productCategoryUpdateDto) {
+        this.name = productCategoryUpdateDto.getName();
+        this.priority = productCategoryUpdateDto.getPriority();
+    }
+
+    public void delete(boolean b) {
+        if(b){
+            this.isDeleted = 10;
+        }
     }
 }
