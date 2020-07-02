@@ -1,20 +1,14 @@
 package com.clothes.mall.repository;
 
 import com.clothes.mall.domain.category.ProductCategory;
-import com.clothes.mall.domain.category.ProductCategoryDetail;
-import com.clothes.mall.repository.AdminRepository;
-import com.clothes.mall.repository.ProductCategoryRepository;
+import com.clothes.mall.domain.category.detail.ProductCategoryDetail;
 import com.clothes.mall.service.ProductCategoryDetailService;
 import org.junit.After;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import javax.transaction.Transactional;
 
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertThat;

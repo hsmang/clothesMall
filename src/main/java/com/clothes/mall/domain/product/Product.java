@@ -2,7 +2,7 @@ package com.clothes.mall.domain.product;
 
 import com.clothes.mall.domain.admin.Admin;
 import com.clothes.mall.domain.BaseTimeEntity;
-import com.clothes.mall.domain.category.ProductCategoryDetail;
+import com.clothes.mall.domain.category.detail.ProductCategoryDetail;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -55,4 +55,27 @@ public class Product extends BaseTimeEntity {
     }
 
 
+    /**
+     * 수정
+     * @param productUpdateDto
+     */
+    public void update(ProductUpdateDto productUpdateDto) {
+        this.name = productUpdateDto.getName();
+        this.costPrice = productUpdateDto.getCostPrice();
+        this.sellingPrice = productUpdateDto.getSellingPrice();
+        this.productInformation = productUpdateDto.getProductInformation();
+        this.status = productUpdateDto.getStatus();
+        this.admin = productUpdateDto.getAdmin();
+        this.productCategoryDetail = productUpdateDto.getProductCategoryDetail();
+    }
+
+    /**
+     * 삭제
+     * @param b
+     */
+    public void delete(boolean b) {
+        if(b){
+            this.isDeleted = 10;
+        }
+    }
 }

@@ -1,10 +1,12 @@
 package com.clothes.mall.controller;
 
+import com.clothes.mall.domain.admin.AdminResponseDto;
 import com.clothes.mall.domain.admin.AdminResponseListDto;
 import com.clothes.mall.domain.admin.AdminSaveDto;
 import com.clothes.mall.domain.admin.AdminUpdateDto;
 import com.clothes.mall.domain.response.CommonResult;
 import com.clothes.mall.domain.response.ListResult;
+import com.clothes.mall.domain.response.SingleResult;
 import com.clothes.mall.repository.AdminRepository;
 import com.clothes.mall.service.AdminService;
 import com.clothes.mall.service.ResponseService;
@@ -36,6 +38,11 @@ public class AdminController {
     @GetMapping("/api/admin")
     public ListResult<AdminResponseListDto> list(@PageableDefault Pageable pageable){
         return responseService.getListResult(adminService.list(pageable));
+    }
+
+    @GetMapping("/api/admin/{id}")
+    public SingleResult<AdminResponseDto> select(@PathVariable Long id){
+        return responseService.getSingleResult(adminService.findById(id));
     }
 
     @DeleteMapping("/api/admin/{id}")

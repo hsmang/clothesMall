@@ -1,6 +1,7 @@
-package com.clothes.mall.domain.category;
+package com.clothes.mall.domain.category.detail;
 
 import com.clothes.mall.domain.BaseTimeEntity;
+import com.clothes.mall.domain.category.ProductCategory;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,5 +43,25 @@ public class ProductCategoryDetail extends BaseTimeEntity {
 
     public void changeName(String name) {
         this.name = name;
+    }
+
+    /**
+     * 수정
+     * @param productCategoryDetailUpdateDto
+     */
+    public void update(ProductCategoryDetailUpdateDto productCategoryDetailUpdateDto) {
+        this.productCategory = productCategoryDetailUpdateDto.getProductCategory();
+        this.name = productCategoryDetailUpdateDto.getName();
+        this.priority = productCategoryDetailUpdateDto.getPriority();
+    }
+
+    /**
+     * 삭제
+     * @param b
+     */
+    public void delete(boolean b) {
+        if(b){
+            this.isDeleted = 10;
+        }
     }
 }

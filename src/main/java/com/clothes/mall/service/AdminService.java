@@ -1,9 +1,6 @@
 package com.clothes.mall.service;
 
-import com.clothes.mall.domain.admin.Admin;
-import com.clothes.mall.domain.admin.AdminResponseListDto;
-import com.clothes.mall.domain.admin.AdminSaveDto;
-import com.clothes.mall.domain.admin.AdminUpdateDto;
+import com.clothes.mall.domain.admin.*;
 import com.clothes.mall.repository.AdminRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
@@ -64,5 +61,16 @@ public class AdminService {
 
         admin.delete(true);
 
+    }
+
+    /**
+     * Admin 한 건 가져오기
+     * @param id
+     * @return
+     */
+    public AdminResponseDto findById(Long id) {
+        Admin admin = adminRepository.findById(id).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 ID 입니다."));
+        AdminResponseDto adminResponseDto = new AdminResponseDto(admin);
+        return adminResponseDto;
     }
 }
