@@ -22,30 +22,30 @@ public class AdminController {
     private final ResponseService responseService;
     private final AdminService adminService;
 
-    @PostMapping("/api/admin")
+    @PostMapping("/api/admins")
     public CommonResult save(@RequestBody AdminSaveDto adminSaveDto){
         adminService.save(adminSaveDto);
         return responseService.getSuccessResult();
     }
 
-    @PutMapping("/api/admin/{id}")
+    @PutMapping("/api/admins/{id}")
     public CommonResult update(@PathVariable("id") Long id, @RequestBody AdminUpdateDto adminUpdateDto){
         System.out.println(adminUpdateDto);
         adminService.update(id, adminUpdateDto);
         return responseService.getSuccessResult();
     }
 
-    @GetMapping("/api/admin")
+    @GetMapping("/api/admins")
     public ListResult<AdminResponseListDto> list(@PageableDefault Pageable pageable){
         return responseService.getListResult(adminService.list(pageable));
     }
 
-    @GetMapping("/api/admin/{id}")
+    @GetMapping("/api/admins/{id}")
     public SingleResult<AdminResponseDto> select(@PathVariable Long id){
         return responseService.getSingleResult(adminService.findById(id));
     }
 
-    @DeleteMapping("/api/admin/{id}")
+    @DeleteMapping("/api/admins/{id}")
     public CommonResult delete(@PathVariable("id") Long id){
         adminService.delete(id);
         return responseService.getSuccessResult();
