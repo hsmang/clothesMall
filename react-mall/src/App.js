@@ -36,9 +36,23 @@ const styles = theme => ({
 
 class App extends Component{
 
-    state = {
-        customers : "",
-        completed : 0
+    constructor(props) {
+        super(props);
+        this.state = {
+            customers : '',
+            completed : 0
+        }
+    }
+
+    stateRefresh = () => {
+        this.setState({
+            customers : '',
+            completed : 0
+        })
+
+        this.callApi()
+            .then(res => this.setState({customers:res}))
+            .catch(err => console.log(err));
     }
 
     componentDidMount() {
@@ -75,12 +89,13 @@ class App extends Component{
                             <TableCell>이름</TableCell>
                             <TableCell>이메일</TableCell>
                             <TableCell>핸드폰번호</TableCell>
+                            <TableCell>설정</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
                         {
                             this.state.customers ? this.state.customers.map(c => {
-                                return ( <Customer key={c.id} id={c.id} aid={c.aid} name={c.name} email={c.email} phoneNumber={c.phoneNumber}></Customer> )})
+                                return ( <Customer stateRefresh={this.stateRefresh} key={c.id} id={c.id} aid={c.aid} name={c.name} email={c.email} phoneNumber={c.phoneNumber}></Customer> )})
                                 :
                                 <TableRow>
                                     <TableCell colSpan={"6"} align={"center"}>
@@ -91,7 +106,7 @@ class App extends Component{
                     </TableBody>
                 </Table>
             </Paper>
-            <AdminAdd></AdminAdd>
+            <AdminAdd stateRefresh={this.stateRefresh}></AdminAdd>
         </div>
     );
   }

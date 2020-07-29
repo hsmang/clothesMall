@@ -13,6 +13,7 @@ class AdminAdd extends Component{
             email : '',
             phoneNumber : ''
         }
+
     }
 
     handleFormSubmit = (e) => {
@@ -20,6 +21,7 @@ class AdminAdd extends Component{
         this.addAdmin()
             .then((response) => {
                 console.log(response.data);
+                this.props.stateRefresh();
             })
     }
 
@@ -33,12 +35,6 @@ class AdminAdd extends Component{
     addAdmin = async () => {
         const axios = require('axios');
         const url = 'http://localhost:8080/api/admins';
-        const formData = new FormData();
-        formData.append('aid', this.state.aid);
-        formData.append('password', this.state.password);
-        formData.append('name', this.state.name);
-        formData.append('email', this.state.email);
-        formData.append('phoneNumber', this.state.phoneNumber);
 
         const params = {
             aid : this.state.aid,

@@ -47,7 +47,8 @@ public class AdminService {
      */
     public List<AdminResponseListDto> list(Pageable pageable) {
         pageable = PageRequest.of(pageable.getPageNumber() <= 0 ? 0 : pageable.getPageNumber() - 1, pageable.getPageSize());
-        return adminRepository.findAll(pageable).stream().map(AdminResponseListDto::new).collect(Collectors.toList());
+
+        return adminRepository.findAllByIsDeleted(0, pageable).stream().map(AdminResponseListDto::new).collect(Collectors.toList());
     }
 
 
