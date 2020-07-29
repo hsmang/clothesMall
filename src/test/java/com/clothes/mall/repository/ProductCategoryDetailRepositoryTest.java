@@ -59,7 +59,7 @@ public class ProductCategoryDetailRepositoryTest {
 
         // when
         String name = "긴팔@@@";
-        productCategoryDetailService.changeName(productCategoryDetail.getId(), name);
+        //productCategoryDetailService.changeName(productCategoryDetail.getId(), name);
 
         // then
         ProductCategoryDetail checkProductCategoryDetail = productCategoryDetailRepository.findById(1L).orElseThrow(() -> new IllegalArgumentException("존재하지 않는 ID 입니다."));
